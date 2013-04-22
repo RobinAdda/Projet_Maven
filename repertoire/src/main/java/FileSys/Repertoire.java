@@ -2,21 +2,20 @@ package FileSys;
 import java.util.*;
 
 /**
- * Cette classe nous permet de représenter un répertoire
+ * Cette classe nous permet de représenter et de manipuler un répertoire
  * 
  * @author Cluchet Adda
- * @version 15/04/13
+ * @version 22/04/13
  */
 public class Repertoire extends Objet
 {
-    // Création d'une liste de type Objet nommé répertoire
+    // Création d'une liste de type Objet nommé repertoire et une liste représentant l'arborescence
     private ArrayList<Objet> repertoire;
     private static ArrayList<Repertoire> listRep = new ArrayList<Repertoire>();
 
     /**
-     * Définition du constructeur de Répertoire
-     * On prend ici en argument le nom donné par l'utilisateur qui sera envoyé à la classe Objet
-     * Ensuite on crée un tableau de type Objet appelé repertoire
+     * Constructeur d'un repertoire
+     * @param nom Nom du repertoire que l'on va instancier
      */
     public Repertoire(String nom)
     {
@@ -28,10 +27,11 @@ public class Repertoire extends Objet
     }
    
     /**
-     * Cette méthode ajoute un objet (fichier ou répertoire)dans le tableau appelé répertoire.
-     * Afin d'ajouter l'élément dans le tableau on le parcourt jusqu'à trouver une case vide.
-     * Ainsi on insère l'objet dans la case correspondante (qui est vide).
-     */
+    * Methode permettant d'ajouter un element dans un repertoire
+    * @param obj Objet que l'on souhaite inserer dans le repertoire
+    * @return un boolean en fonction de la reussite de l'ajout
+    * @throws RepException Une exception est soulevee si l'ajout n'est pas possible
+    */
     public boolean add(Object obj) throws RepException
     {
         if(obj instanceof Objet && obj != null){
@@ -50,9 +50,9 @@ public class Repertoire extends Objet
     }
  
     /**
-     * 
-     * @param obj
-     * @return
+     * Methode permettant de tester si un objet possede le meme nom qu'un element du repertoire
+     * @param obj Objet a comprarer avec le contenu du dossier
+     * @return Un boolean selon le resultat de la comparaison
      */
     private boolean pasMemeNom(Objet obj){
         boolean result = true;
@@ -67,9 +67,9 @@ public class Repertoire extends Objet
     }
     
     /**
-     * 
-     * @param obj
-     * @return
+     * Permet d'ajouter un repertoire dans l'arborescence
+     * @param obj Objet que l'on souhaite ajouter dans la liste
+     * @return un boolean en fonction de la reussite de l'ajout dans l'arborescence
      */
      public static boolean ajoutRepList(Objet obj){
  
@@ -82,14 +82,12 @@ public class Repertoire extends Objet
             return false;
     }
     /**
-     * 
-     * @param obj
-     * @return
+     * Permet de savoir si un objet est deja present dans l'arborescence 
+     * @param obj Objet dont l'on veut tester la présence dans l'arborescence
+     * @return un boolean en fonction du resultat du test
      */
     public static boolean nonPresentDans(Objet obj){
     
-        
-        
         for(int i = 0;i<listRep.size();i++){
             if(listRep.get(i) == obj)
                 return false;
@@ -98,9 +96,9 @@ public class Repertoire extends Objet
         return true;
     }
     
-    
     /**
-     *
+     * Permet de recupere la taille totale de l'arborescence a partir d'un repetoire
+     * @return la taille du repertoire
      */
     public int getTaille()
     {
