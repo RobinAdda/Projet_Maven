@@ -66,7 +66,11 @@ public class Repertoire extends Objet
         return result;      
     }
     
-    
+    /**
+     * 
+     * @param obj
+     * @return
+     */
      public static boolean ajoutRepList(Objet obj){
  
         if(obj instanceof Repertoire){
@@ -77,7 +81,11 @@ public class Repertoire extends Objet
         else
             return false;
     }
-    
+    /**
+     * 
+     * @param obj
+     * @return
+     */
     public static boolean nonPresentDans(Objet obj){
     
         
