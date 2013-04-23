@@ -13,14 +13,14 @@ import org.junit.Test;
  * 
  */
 
-public class TestRep{
+public class TestRep {
 	
-	Repertoire r1;
+	private Repertoire r1;
 	/**
 	 *Construction d'un nouveau repertoire avant les Tests
 	 */
 	@Before
-	public void setUp(){
+	public final void setUp() {
 		r1 = new Repertoire("r1");
 	}
 	
@@ -28,8 +28,8 @@ public class TestRep{
 	 * Ajout d'un reference null dans une arborescence
 	 * @throws RepException Exception si la reference est null
 	 */
-	@Test(expected=RepException.class)
-	public void testajoutreferencenull() throws RepException{
+	@Test(expected = RepException.class)
+	public final void testajoutreferencenull() throws RepException {
 		r1.add(null);
 	}
 
@@ -37,9 +37,9 @@ public class TestRep{
 	 * Ajout d'une reference qui n'est pas de type Objet
 	 * @throws RepException Exception si la reference n'a pas le bon type
 	 */
-	@Test(expected=RepException.class)
-	public void testajoutreferencenoncompatible() throws RepException{
-		String a ="abcd";
+	@Test(expected = RepException.class)
+	public final void testajoutreferencenoncompatible() throws RepException {
+		String a = "abcd";
 		r1.add(a);
 	}
 
@@ -49,7 +49,7 @@ public class TestRep{
 	 * @throws RepException
 	 */
 	@Test
-	public void ajoutfichierreussit() throws FicException,RepException{
+	public final void ajoutfichierreussit() throws FicException, RepException {
 		Fichier f1 = new Fichier("f1", 10);
 		assertTrue(r1.add(f1));
 	}
@@ -59,7 +59,7 @@ public class TestRep{
 	 * @throws RepException
 	 */
 	@Test
-	public void ajoutrepertoirereussit() throws RepException{
+	public final void ajoutrepertoirereussit() throws RepException {
 		Repertoire r2 = new Repertoire("r2");
 		assertTrue(r1.add(r2));
 	}
@@ -70,10 +70,10 @@ public class TestRep{
 	 * @throws FicException
 	 * @throws RepException
 	 */
-	@Test(expected=RepException.class)
-	public void nompresentdansrep() throws FicException,RepException{
+	@Test(expected = RepException.class)
+	public final void nompresentdansrep() throws FicException, RepException {
 		Repertoire r2 = new Repertoire("abcd");
-		Fichier f1 = new Fichier("abcd",12);
+		Fichier f1 = new Fichier("abcd", 12);
 		r1.add(r2);
 		r1.add(f1);
 	}
@@ -82,8 +82,8 @@ public class TestRep{
 	 * 
 	 * @throws RepException
 	 */
-	@Test(expected=RepException.class)
-	public void reparborescence1() throws RepException{
+	@Test(expected = RepException.class)
+	public final void reparborescence1() throws RepException {
 		Repertoire r2 = new Repertoire("r2");
 		Repertoire r3 = new Repertoire("r3");
 		r1.add(r2);
@@ -95,8 +95,8 @@ public class TestRep{
 	 * 
 	 * @throws RepException
 	 */
-	@Test(expected=RepException.class)
-	public void reparborescence2() throws RepException{
+	@Test(expected = RepException.class)
+	public final void reparborescence2() throws RepException {
 		Repertoire r2 = new Repertoire("r2");
 		Repertoire r3 = new Repertoire("r3");
 		Repertoire r4 = new Repertoire("r4");
@@ -114,20 +114,20 @@ public class TestRep{
 	 * @throws FicException
 	 */
 	@Test
-	public void calculetaille1()throws RepException,FicException{
+	public final void calculetaille1()throws RepException, FicException {
 		Repertoire r2 = new Repertoire("r2");
 		Repertoire r3 = new Repertoire("r3");
-		Fichier f1 = new Fichier("f1",5);
-		Fichier f2 = new Fichier("f2",10);
-		Fichier f3 = new Fichier("f3",15);
-		Fichier f4 = new Fichier("f4",20);
+		Fichier f1 = new Fichier("f1", 5);
+		Fichier f2 = new Fichier("f2", 10);
+		Fichier f3 = new Fichier("f3", 15);
+		Fichier f4 = new Fichier("f4", 20);
 		r1.add(r2);
 		r1.add(r3);
 		r1.add(f1);
 		r1.add(f2);
 		r2.add(f3);
 		r3.add(f4);
-		assertEquals(r1.getTaille(),50,0);
+		assertEquals(r1.getTaille(), 50, 0);
 	}
 	
 	/**
@@ -136,14 +136,14 @@ public class TestRep{
 	 * @throws FicException
 	 */
 	@Test
-	public void calculetaille2()throws RepException,FicException{
+	public final void calculetaille2()throws RepException, FicException {
 		Repertoire r2 = new Repertoire("r2");
 		Repertoire r3 = new Repertoire("r3");
 		Repertoire r4 = new Repertoire("r4");
-		Fichier f1 = new Fichier("f1",5);
-		Fichier f2 = new Fichier("f2",10);
-		Fichier f3 = new Fichier("f3",5);
-		Fichier f4 = new Fichier("f4",20);
+		Fichier f1 = new Fichier("f1", 5);
+		Fichier f2 = new Fichier("f2", 10);
+		Fichier f3 = new Fichier("f3", 5);
+		Fichier f4 = new Fichier("f4", 20);
 		r1.add(r2);
 		r2.add(r3);
 		r2.add(r4);
@@ -151,6 +151,6 @@ public class TestRep{
 		r2.add(f2);
 		r3.add(f3);
 		r4.add(f4);
-		assertEquals(r1.getTaille(),40,0);
+		assertEquals(r1.getTaille(), 40, 0);
 	}
 }

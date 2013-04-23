@@ -14,8 +14,7 @@ public abstract class Objet
      * Constructeur d'un Objet (un objet ne sera jamais instancie car elle est immuable)
      * @param nom Nom du fichier ou du dossier
      */
-    public Objet(String nom)
-    {
+    public Objet(String nom) {
     	this.nom= nom;	
     }
 

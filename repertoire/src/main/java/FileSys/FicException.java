@@ -7,10 +7,8 @@ package FileSys;
  * @version 22/04/13
  */
 @SuppressWarnings("serial")
-public class FicException extends Exception
-{
-	public FicException(String code)
-	{
+public class FicException extends Exception {
+	public FicException(final String code) {
 		super(code);
 	}
 	
